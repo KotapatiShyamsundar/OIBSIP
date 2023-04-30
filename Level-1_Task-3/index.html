@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <p style="text-align: left"><time id="clock"></time></p>
+      <script>
+        // Get the current time and format it
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        var timeString =
+          hours.toString().padStart(2, "0") +
+          ":" +
+          minutes.toString().padStart(2, "0") +
+          ":" +
+          seconds.toString().padStart(2, "0");
+
+        // Set the time element's text to the formatted time
+        document.getElementById("clock").textContent = timeString;
+
+        // Update the time every second
+        setInterval(function () {
+          var now = new Date();
+          var hours = now.getHours();
+          var minutes = now.getMinutes();
+          var seconds = now.getSeconds();
+          var timeString =
+            hours.toString().padStart(2, "0") +
+            ":" +
+            minutes.toString().padStart(2, "0") +
+            ":" +
+            seconds.toString().padStart(2, "0");
+          document.getElementById("clock").textContent = timeString;
+        }, 1000);
+      </script>
+      <h1>Temperature Converter</h1>
+      <form>
+        <label for="temperature">Enter temperature in degrees:</label>
+        <input
+          type="number"
+          id="temperature"
+          placeholder="Enter temperature..."
+        />
+        <div class="radio-buttons">
+          <h3>Type:</h3>
+          <input
+            type="radio"
+            id="celsius"
+            name="unit"
+            value="Celsius"
+            checked
+          />
+          <label for="celsius">Celsius</label>
+          <input type="radio" id="fahrenheit" name="unit" value="Fahrenheit" />
+          <label for="fahrenheit">Fahrenheit</label>
+        </div>
+        <button type="button" id="convert-btn" onclick="convertTemperature()">
+          Convert
+        </button>
+      </form>
+      <h2>Result:</h2>
+      <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
